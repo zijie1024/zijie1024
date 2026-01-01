@@ -25,7 +25,7 @@ jobs:
             dist/calendar-last-year-snake.svg
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # --- 关键修改：去掉路径前缀，开启调试 ---
       - name: Generate 3D Calendar
@@ -33,7 +33,7 @@ jobs:
         with:
           # 1. 先生成到根目录，避免 Docker 路径映射问题
           filename: calendar-last-year-3d.svg
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
@@ -46,7 +46,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           filename: calendar-last-5year.svg
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
