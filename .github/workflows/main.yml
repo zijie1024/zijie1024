@@ -1,4 +1,4 @@
-name: Update All Calendars
+name: UpdateCalendars
 
 on:
   schedule:
@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Create dist directory
-        run: mkdir -p dist
 
       - name: Generate Snake
         uses: Platane/snk@v3
@@ -35,7 +32,7 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-          plugin_isocalendar_title: ""
+          plugin_isocalendar_title: "3D View of Contribution Activity"
           output_action: none
 
       - name: Generate 5-Year Calendar
@@ -46,19 +43,10 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
-          plugin_calendar_title: ""
+          plugin_calendar_title: "Commit History Over the Last 5 Years"
           output_action: none
-
-      - name: Modify SVGs
-        run: |
-          # 直接操作 dist 下的文件。如果文件不存在，sed 会报错并让 Action 失败，暴露问题
-          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
-          sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
-          
-          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
 
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Update metrics and calendars"
           file_pattern: dist/*
