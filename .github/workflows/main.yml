@@ -33,6 +33,7 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
           plugin_isocalendar_title: ""
+          output_action: none
 
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
@@ -43,9 +44,9 @@ jobs:
           plugin_calendar: yes
           plugin_calendar_limit: 5
           plugin_calendar_title: ""
+          output_action: none
 
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "chore: update activity graph"
           file_pattern: dist/*
