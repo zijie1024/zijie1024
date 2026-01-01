@@ -1,0 +1,51 @@
+name: Update All Calendars
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Generate Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: zijie1024
+          outputs: |
+            dist/calendar-last-year-snake.svg
+            dist/calendar-last-year-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Generate 3D Calendar
+        uses: lowlighter/metrics@latest
+        with:
+          filename: dist/calendar-last-year-3d.svg
+          token: ${{ secrets.GH_TOKEN }}
+          base: ""
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          plugin_isocalendar_title: ""
+
+      - name: Generate 5-Year Calendar
+        uses: lowlighter/metrics@latest
+        with:
+          filename: dist/calendar-last-5year.svg
+          token: ${{ secrets.GH_TOKEN }}
+          base: ""
+          plugin_calendar: yes
+          plugin_calendar_limit: 5
+          plugin_calendar_title: ""
+
+      - name: Commit all files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: update activity graph"
+          file_pattern: dist/*
