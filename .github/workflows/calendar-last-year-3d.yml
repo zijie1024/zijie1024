@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          filename: dist/contribution-calendar-3d.svg
+          filename: dist/calendar-last-year-3d.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
