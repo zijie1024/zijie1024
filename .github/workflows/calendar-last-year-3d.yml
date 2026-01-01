@@ -18,6 +18,3 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-      - name: Remove unwanted title header
-        run: |
-          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
