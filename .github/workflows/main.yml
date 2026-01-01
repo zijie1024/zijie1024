@@ -1,4 +1,4 @@
-name: UpdateCalendars
+name: Update All Calendars
 
 on:
   schedule:
@@ -14,63 +14,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Create dist directory
-        run: mkdir -p dist
-
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
-          github_user_name: ${{ github.repository_owner }}
+          github_user_name: zijie1024
           outputs: |
             dist/calendar-last-year-snake.svg
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      # --- 关键修改：去掉路径前缀，开启调试 ---
       - name: Generate 3D Calendar
         uses: lowlighter/metrics@latest
         with:
-          # 1. 先生成到根目录，避免 Docker 路径映射问题
-          filename: calendar-last-year-3d.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: dist/calendar-last-year-3d.svg
+          token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+          plugin_isocalendar_title: ""
           output_action: none
-          # 2. 开启调试日志，如果有错会直接打印出来
-          debug: yes
-          verify: no
 
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: calendar-last-5year.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: dist/calendar-last-5year.svg
+          token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
+          plugin_calendar_title: ""
           output_action: none
-          debug: yes
-          verify: no
-
-      # --- 手动移动文件并检查 ---
-      - name: Move and Modify
-        run: |
-          echo "Checking generated files in root..."
-          ls -l calendar-*.svg || echo "Files not found in root!"
-          
-          # 移动文件 (如果生成成功)
-          mv calendar-last-year-3d.svg dist/ || exit 1
-          mv calendar-last-5year.svg dist/ || exit 1
-          
-          # 修改文件
-          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
-          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
-          sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
 
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Update metrics and calendars"
           file_pattern: dist/*
