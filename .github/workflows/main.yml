@@ -14,6 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create dist directory
+        run: mkdir -p dist
+
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
@@ -27,7 +30,7 @@ jobs:
       - name: Generate 3D Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: dist/calendar-last-year-3d.svg
+          filename: calendar-last-year-3d.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
@@ -37,15 +40,17 @@ jobs:
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: dist/calendar-last-5year.svg
+          filename: calendar-last-5year.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
           output_action: none
 
-      - name: Modify SVGs
+      - name: Move and Modify SVGs
         run: |
+          mv calendar-last-year-3d.svg dist/
+          mv calendar-last-5year.svg dist/
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
           sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
