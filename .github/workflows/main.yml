@@ -32,7 +32,6 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-          plugin_isocalendar_title: "3D View of Contribution Activity"
           output_action: none
 
       - name: Generate 5-Year Calendar
@@ -43,7 +42,6 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
-          plugin_calendar_title: "Commit History Over the Last 5 Years"
           output_action: none
 
       - name: Commit all files
