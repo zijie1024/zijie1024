@@ -46,8 +46,8 @@ jobs:
 
       - name: Modify SVGs
         run: |
-          sed -i 's/Contributions calendar//g' dist/calendar-last-year-3d.svg
-          sed -i 's/Contributions calendar//g' dist/calendar-last-5year.svg
+          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
+          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
           sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
 
       - name: Commit all files
