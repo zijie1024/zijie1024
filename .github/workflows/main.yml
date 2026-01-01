@@ -14,6 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create dist directory
+        run: mkdir -p dist
+
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
@@ -46,7 +49,16 @@ jobs:
           plugin_calendar_title: ""
           output_action: none
 
+      - name: Modify SVGs
+        run: |
+          # 直接操作 dist 下的文件。如果文件不存在，sed 会报错并让 Action 失败，暴露问题
+          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
+          sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
+          
+          sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
+
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          commit_message: "Update metrics and calendars"
           file_pattern: dist/*
