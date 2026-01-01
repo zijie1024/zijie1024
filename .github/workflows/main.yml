@@ -27,7 +27,7 @@ jobs:
       - name: Generate 3D Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: dist/calendar-last-year-3d.svg
+          filename: calendar-last-year-3d.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
@@ -37,12 +37,18 @@ jobs:
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: dist/calendar-last-5year.svg
+          filename: calendar-last-5year.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
           output_action: none
+
+      - name: Move to Dist
+        run: |
+          mkdir -p dist
+          mv calendar-last-year-3d.svg dist/
+          mv calendar-last-5year.svg dist/
 
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
