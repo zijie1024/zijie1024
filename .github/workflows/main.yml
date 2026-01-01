@@ -32,12 +32,7 @@ jobs:
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-          plugin_isocalendar_title: " "
           output_action: none
-          extras_css: |
-            h2, .header { display: none !important; visibility: hidden !important; height: 0 !important; }
-            .stat .name, .stat .content { color: #8b949e !important; fill: #8b949e !important; }
-            a { color: #8b949e !important; text-decoration: none !important; cursor: default !important; }
 
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
@@ -47,10 +42,13 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
-          plugin_calendar_title: " "
           output_action: none
-          extras_css: |
-            h2, .header { display: none !important; visibility: hidden !important; height: 0 !important; }
+
+      - name: Modify SVGs
+        run: |
+          sed -i 's/Contributions calendar//g' dist/calendar-last-year-3d.svg
+          sed -i 's/Contributions calendar//g' dist/calendar-last-5year.svg
+          sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
 
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
