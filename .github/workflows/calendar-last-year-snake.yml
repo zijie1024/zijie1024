@@ -1,4 +1,4 @@
-name: CalendarSnake
+name: CalendarLastYearSnake
 
 on:
   schedule:
