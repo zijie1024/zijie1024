@@ -27,39 +27,44 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+      # --- 关键修改：去掉路径前缀，开启调试 ---
       - name: Generate 3D Calendar
         uses: lowlighter/metrics@latest
         with:
-          # 直接写到 dist 目录，不需要后续 mv
-          filename: dist/calendar-last-year-3d.svg
+          # 1. 先生成到根目录，避免 Docker 路径映射问题
+          filename: calendar-last-year-3d.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
           output_action: none
+          # 2. 开启调试日志，如果有错会直接打印出来
+          debug: yes
+          verify: no
 
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
         with:
-          # 直接写到 dist 目录
-          filename: dist/calendar-last-5year.svg
+          filename: calendar-last-5year.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
           output_action: none
+          debug: yes
+          verify: no
 
-      # 增加一个检查步骤，如果上面生成失败，这里会报错并列出文件，方便排查
-      - name: Check file existence
+      # --- 手动移动文件并检查 ---
+      - name: Move and Modify
         run: |
-          echo "=== Listing dist directory ==="
-          ls -R dist/
-          test -f dist/calendar-last-year-3d.svg || { echo "Error: 3D Calendar not generated"; exit 1; }
-          test -f dist/calendar-last-5year.svg || { echo "Error: 5-Year Calendar not generated"; exit 1; }
-
-      - name: Modify SVGs
-        run: |
-          # 此时文件一定在 dist 下，直接修改
+          echo "Checking generated files in root..."
+          ls -l calendar-*.svg || echo "Files not found in root!"
+          
+          # 移动文件 (如果生成成功)
+          mv calendar-last-year-3d.svg dist/ || exit 1
+          mv calendar-last-5year.svg dist/ || exit 1
+          
+          # 修改文件
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
           sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
