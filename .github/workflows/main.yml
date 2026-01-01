@@ -20,7 +20,7 @@ jobs:
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
-          github_user_name: zijie1024
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/calendar-last-year-snake.svg
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
@@ -30,7 +30,8 @@ jobs:
       - name: Generate 3D Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: calendar-last-year-3d.svg
+          # 直接写到 dist 目录，不需要后续 mv
+          filename: dist/calendar-last-year-3d.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_isocalendar: yes
@@ -40,17 +41,25 @@ jobs:
       - name: Generate 5-Year Calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: calendar-last-5year.svg
+          # 直接写到 dist 目录
+          filename: dist/calendar-last-5year.svg
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 5
           output_action: none
 
-      - name: Move and Modify SVGs
+      # 增加一个检查步骤，如果上面生成失败，这里会报错并列出文件，方便排查
+      - name: Check file existence
         run: |
-          mv calendar-last-year-3d.svg dist/
-          mv calendar-last-5year.svg dist/
+          echo "=== Listing dist directory ==="
+          ls -R dist/
+          test -f dist/calendar-last-year-3d.svg || { echo "Error: 3D Calendar not generated"; exit 1; }
+          test -f dist/calendar-last-5year.svg || { echo "Error: 5-Year Calendar not generated"; exit 1; }
+
+      - name: Modify SVGs
+        run: |
+          # 此时文件一定在 dist 下，直接修改
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-year-3d.svg
           sed -i '/<h2 class="field">/,/<\/h2>/d' dist/calendar-last-5year.svg
           sed -i 's/#58a6ff/#8b949e/g' dist/calendar-last-year-3d.svg
@@ -58,4 +67,5 @@ jobs:
       - name: Commit all files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          commit_message: "Update metrics and calendars"
           file_pattern: dist/*
