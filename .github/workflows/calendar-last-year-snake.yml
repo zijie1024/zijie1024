@@ -22,7 +22,7 @@ jobs:
             dist/calendar-last-year-snake.svg
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
 
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
