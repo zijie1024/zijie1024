@@ -17,7 +17,7 @@ jobs:
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
-          github_user_name: zijie1024
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/calendar-last-year-snake.svg
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
