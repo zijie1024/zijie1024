@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Generate Snake
         uses: Platane/snk@v3
@@ -23,11 +23,8 @@ jobs:
             dist/calendar-last-year-snake-dark.svg?palette=github-dark
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
-          
-      - name: Pull latest changes
-        run: git pull origin main --no-rebase
 
       - name: Commit files
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: dist/*
