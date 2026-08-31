@@ -1,0 +1,53 @@
+name: Update Contribution Graph
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 0 * * *"
+      timezone: "Asia/Shanghai"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile-contributions
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+
+      - name: Generate contribution graph
+        run: node scripts/generate-contributions.mjs
+        env:
+          GITHUB_USERNAME: zijie1024
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Commit generated SVGs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/contributions-light.svg
+          git add assets/contributions-dark.svg
+
+          if git diff --cached --quiet; then
+            echo "Contribution graph has not changed."
+            exit 0
+          fi
+
+          git commit -m "chore: update contribution graph"
+          git push origin "HEAD:${{ github.event.repository.default_branch }}"
