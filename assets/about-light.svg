@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="182" viewBox="0 0 1200 182">
-<defs><style>
-.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#1a7f37;font-size:15px}.c{fill:#1f2328;font-size:15px}.b{fill:#4b5560;font-size:15px}.s{fill:#1f2328;font-size:15px;font-weight:700}
-</style></defs>
-<text x="12" y="20" class="t p">zijie1024@github:~$</text><text x="190" y="20" class="t c">cat ./about.txt</text>
-<rect x="1" y="38" width="1198" height="143" rx="13" fill="#fff" stroke="#d0d7de"/>
-<text x="28" y="76" class="t b">I build systems around <tspan class="s">Agent Runtime</tspan>, <tspan class="s">AI Coding</tspan>, <tspan class="s">Backend Engineering</tspan> and</text>
-<text x="28" y="102" class="t b"><tspan class="s">Retrieval-Augmented Generation</tspan>.</text>
-<text x="28" y="140" class="t b">I care about clean abstractions, predictable execution, observability and making AI-assisted</text>
-<text x="28" y="166" class="t b">development feel like normal software engineering rather than a collection of demos.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="188" viewBox="0 0 1200 188" role="img" aria-labelledby="title desc">
+<title id="title">zijie1024 About</title>
+<desc id="desc">About section describing engineering approach and philosophy.</desc>
+<text x="12" y="20" fill="#1a7f37" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">zijie1024@github:~$</text>
+<text x="205" y="20" fill="#1f2328" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">cat ./about.txt</text>
+<rect x="1" y="38" width="1198" height="145" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+<text x="28" y="84" fill="#1f2328" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">I enjoy turning complex ideas into <tspan font-weight="600">practical software</tspan> and shaping ambiguous requirements into <tspan font-weight="600">clear, maintainable systems</tspan>.</text>
+<text x="28" y="124" fill="#4b5560" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">I value <tspan font-weight="600">thoughtful abstractions</tspan>, clear boundaries and <tspan font-weight="600">reliable execution</tspan>, and believe AI belongs in <tspan font-weight="600">software engineering</tspan>, supporting</text>
+<text x="28" y="149" fill="#4b5560" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">higher-quality software delivery rather than becoming a shortcut around engineering itself.</text>
 </svg>
