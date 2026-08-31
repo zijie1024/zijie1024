@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="34" viewBox="0 0 1200 34">
-<defs><style>.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:15px}.p{fill:#1a7f37}.c{fill:#1f2328}</style></defs>
-<text x="12" y="21" class="t p">zijie1024@github:~$</text><text x="190" y="21" class="t c">./connect</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="100" viewBox="0 0 380 100">
+<defs><style>.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.n{fill:#1f2328;font-size:20px;font-weight:700}.s{fill:#656d76;font-size:13px}.a{fill:#0969da;font-size:18px}</style></defs>
+<rect x="1" y="1" width="378" height="98" rx="11" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="22" y="37" class="t n">Blog</text><text x="350" y="37" text-anchor="end" class="t a">↗</text>
+<path d="M22 51H358" stroke="#d0d7de"/>
+<text x="22" y="76" class="t s">notes / writing</text>
 </svg>
