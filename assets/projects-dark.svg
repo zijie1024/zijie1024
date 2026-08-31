@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+<title id="title">Featured Projects</title>
+<desc id="desc">Featured GitHub projects</desc>
+<defs>
+<style>
+.text{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.prompt{fill:#7ee787;font-size:15px}
+.command{fill:#f0f6fc;font-size:15px}
+.name{fill:#f0f6fc;font-size:20px;font-weight:700}
+.type{fill:#79c0ff;font-size:12px}
+.body{fill:#aeb8c2;font-size:14px}
+.tag{fill:#c7d2dc;font-size:11px}
+.repo{fill:#79c0ff;font-size:11px}
+</style>
+</defs>
+<rect width="1200" height="300" rx="14" fill="#0f141b"/>
+<rect x="1" y="1" width="1198" height="298" rx="13" fill="none" stroke="#26313d"/>
+<text x="28" y="38" class="text prompt">zijie1024@github:~$</text>
+<text x="206" y="38" class="text command">ls ./projects --featured</text>
+<rect x="28" y="62" width="558" height="210" rx="11" fill="#101720" stroke="#2b3947"/>
+<text x="50" y="96" class="text name">Autryn</text>
+<text x="50" y="120" class="text type">Composable Local AI Agent Runtime</text>
+<text x="50" y="156" class="text body">A lightweight runtime for building local AI agents with unified</text>
+<text x="50" y="178" class="text body">model, message and tool contracts, plus execution, session,</text>
+<text x="50" y="200" class="text body">memory, delegation, handoff and middleware abstractions.</text>
+<rect x="50" y="222" width="82" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="91" y="239" text-anchor="middle" class="text tag">TypeScript</text>
+<rect x="142" y="222" width="46" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="165" y="239" text-anchor="middle" class="text tag">Bun</text>
+<rect x="198" y="222" width="70" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="233" y="239" text-anchor="middle" class="text tag">Runtime</text>
+<rect x="278" y="222" width="70" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="313" y="239" text-anchor="middle" class="text tag">Memory</text>
+<rect x="358" y="222" width="62" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="389" y="239" text-anchor="middle" class="text tag">Tools</text>
+<rect x="614" y="62" width="558" height="210" rx="11" fill="#101720" stroke="#2b3947"/>
+<text x="636" y="96" class="text name">utils</text>
+<text x="636" y="120" class="text type">Java Common Development Toolkit</text>
+<text x="636" y="156" class="text body">A modular backend toolkit collecting reusable solutions for</text>
+<text x="636" y="178" class="text body">reliable messaging, Redis caching and coordination, verification</text>
+<text x="636" y="200" class="text body">services, file processing and object storage.</text>
+<rect x="636" y="222" width="70" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="671" y="239" text-anchor="middle" class="text tag">Java 21</text>
+<rect x="716" y="222" width="112" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="772" y="239" text-anchor="middle" class="text tag">Spring Boot 4</text>
+<rect x="838" y="222" width="62" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="869" y="239" text-anchor="middle" class="text tag">Maven</text>
+<rect x="910" y="222" width="62" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="941" y="239" text-anchor="middle" class="text tag">Redis</text>
+<rect x="982" y="222" width="92" height="26" rx="7" fill="#0f141b" stroke="#2b3947"/>
+<text x="1028" y="239" text-anchor="middle" class="text tag">RabbitMQ</text>
+<text x="1150" y="255" text-anchor="end" class="text repo">github.com/zijie1024/utils ↗</text>
+</svg>
