@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">zijie1024 GitHub Profile Terminal</title>
+<desc id="desc">Terminal style hero card for GitHub profile README.</desc>
+<defs>
+<style>
+.text{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.title{fill:#656d76;font-size:12px}
+.prompt{fill:#1a7f37;font-size:16px}
+.command{fill:#1f2328;font-size:16px}
+.name{fill:#1f2328;font-size:42px;font-weight:700}
+.role{fill:#57606a;font-size:22px}
+.body{fill:#4b5560;font-size:15px}
+.key{fill:#656d76;font-size:14px}
+.val{fill:#1f2328;font-size:14px}
+.tagText{fill:#374151;font-size:12px}
+.footer{fill:#1a7f37;font-size:16px}
+.footerCursor{fill:#1a7f37}
+</style>
+</defs>
+<rect width="1200" height="360" rx="18" fill="#ffffff"/>
+<rect x="1" y="1" width="1198" height="358" rx="17" fill="none" stroke="#d0d7de"/>
+<rect x="0" y="0" width="1200" height="46" rx="18" fill="#f6f8fa"/>
+<path d="M0 46H1200" stroke="#d0d7de"/>
+<circle cx="24" cy="23" r="6" fill="#ff5f56"/>
+<circle cx="44" cy="23" r="6" fill="#ffbd2e"/>
+<circle cx="64" cy="23" r="6" fill="#27c93f"/>
+<text x="600" y="28" text-anchor="middle" class="text title">zijie1024@github — profile</text>
+<text x="28" y="76" class="text prompt">zijie1024@github:~$</text>
+<text x="206" y="76" class="text command">whoami</text>
+<text x="28" y="126" class="text name">yk</text>
+<text x="28" y="156" class="text role">AI Full-stack Engineer</text>
+<text x="28" y="192" class="text body">Building AI-native developer tools, agent runtimes and backend systems.</text>
+<text x="28" y="216" class="text body">Interested in how reliable software architecture evolves when models, tools, memory and execution become first-class runtime primitives.</text>
+<rect x="28" y="238" width="108" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="82" y="256" text-anchor="middle" class="text tagText">Agent Runtime</text>
+<rect x="146" y="238" width="92" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="192" y="256" text-anchor="middle" class="text tagText">AI Coding</text>
+<rect x="248" y="238" width="126" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="311" y="256" text-anchor="middle" class="text tagText">Backend Systems</text>
+<rect x="384" y="238" width="52" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="410" y="256" text-anchor="middle" class="text tagText">RAG</text>
+<rect x="446" y="238" width="128" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="510" y="256" text-anchor="middle" class="text tagText">Developer Tools</text>
+<path d="M760 88V270" stroke="#d0d7de" stroke-dasharray="5 5"/>
+<text x="790" y="116" class="text key">status</text>
+<text x="900" y="116" class="text val">● building</text>
+<text x="790" y="150" class="text key">project</text>
+<text x="900" y="150" class="text val">Autryn</text>
+<text x="790" y="184" class="text key">focus</text>
+<text x="900" y="184" class="text val">Agent Runtime / Context Engineering</text>
+<text x="790" y="218" class="text key">mode</text>
+<text x="900" y="218" class="text val">ship → learn → iterate</text>
+<text x="28" y="320" class="text footer">zijie1024@github:~$</text>
+<rect x="206" y="306" width="10" height="18" rx="1" class="footerCursor"/>
+</svg>
