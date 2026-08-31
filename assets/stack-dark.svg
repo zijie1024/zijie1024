@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="272" viewBox="0 0 1200 272">
 <defs><style>
-.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#7ee787;font-size:15px}.c{fill:#f0f6fc;font-size:15px}.k{fill:#79c0ff;font-size:14px}.v{fill:#d7e0e8;font-size:14px}.m{fill:#7d8b99;font-size:11px}
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#7ee787;font-size:15px}.c{fill:#f0f6fc;font-size:15px}.k{fill:#79c0ff;font-size:14px}.v{fill:#aeb8c2;font-size:14px}.m{fill:#7d8b99;font-size:11px}
 </style></defs>
 <text x="12" y="20" class="t p">zijie1024@github:~$</text><text x="190" y="20" class="t c">cat ./stack.yml</text>
 <rect x="1" y="38" width="1198" height="233" rx="13" fill="#0f141b" stroke="#26313d"/>
-<path d="M600 58V244" stroke="#2b3744" stroke-dasharray="5 5"/>
+<path d="M600 58V244" stroke="#26313d" stroke-dasharray="5 5"/>
 <text x="34" y="74" class="t k">languages:</text>
-<text x="56" y="102" class="t v">- Java</text><text x="56" y="128" class="t v">- TypeScript</text><text x="56" y="154" class="t v">- Python</text>
+<text x="56" y="102" class="t v">- Java</text><text x="56" y="128" class="t v">- C/C++</text><text x="56" y="154" class="t v">- Go</text><text x="56" y="180" class="t v">- Python</text><text x="56" y="206" class="t v">- TypeScript</text>
 <text x="300" y="74" class="t k">backend:</text>
-<text x="322" y="102" class="t v">- Spring Boot</text><text x="322" y="128" class="t v">- MySQL</text><text x="322" y="154" class="t v">- Redis</text><text x="322" y="180" class="t v">- RabbitMQ</text>
+<text x="322" y="102" class="t v">- Spring Boot</text><text x="322" y="128" class="t v">- MySQL</text><text x="322" y="154" class="t v">- Redis</text><text x="322" y="180" class="t v">- RabbitMQ / Kafka</text><text x="322" y="206" class="t v">- Elasticsearch</text>
 <text x="636" y="74" class="t k">ai:</text>
-<text x="658" y="102" class="t v">- Agent Runtime</text><text x="658" y="128" class="t v">- RAG</text><text x="658" y="154" class="t v">- Tool / Skill</text><text x="658" y="180" class="t v">- Context / Memory</text><text x="658" y="206" class="t v">- AI Coding</text>
+<text x="658" y="102" class="t v">- Agent</text><text x="658" y="128" class="t v">- RAG</text><text x="658" y="154" class="t v">- Tool / Skill</text><text x="658" y="180" class="t v">- Context / Memory</text><text x="658" y="206" class="t v">- AI Coding</text>
 <text x="930" y="74" class="t k">infra:</text>
-<text x="952" y="102" class="t v">- Docker</text><text x="952" y="128" class="t v">- Linux</text><text x="952" y="154" class="t v">- GitHub Actions</text>
+<text x="952" y="102" class="t v">- Linux</text><text x="952" y="128" class="t v">- Docker</text><text x="952" y="154" class="t v">- Kubernetes</text><text x="952" y="180" class="t v">- Nginx</text><text x="952" y="206" class="t v">- Git / GitHub</text>
 <text x="34" y="246" class="t m"># tools change; engineering principles stay.</text>
 </svg>
