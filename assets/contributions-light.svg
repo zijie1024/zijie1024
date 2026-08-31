@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220">
+<defs><style>
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#1a7f37;font-size:15px}.c{fill:#1f2328;font-size:15px}.m{fill:#656d76;font-size:11px}
+</style><pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="12" height="12" rx="2" fill="#ebedf0"/></pattern></defs>
+<text x="12" y="20" class="t p">zijie1024@github:~$</text><text x="190" y="20" class="t c">git contributions --since="1 year ago"</text>
+<rect x="1" y="38" width="1198" height="181" rx="13" fill="#fff" stroke="#d0d7de"/>
+<rect x="58" y="72" width="954" height="126" fill="url(#grid)"/>
+<text x="1044" y="92" class="t m">waiting for</text><text x="1044" y="112" class="t m">GitHub Actions...</text>
+</svg>
