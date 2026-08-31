@@ -33,7 +33,6 @@ jobs:
         env:
           GITHUB_USERNAME: zijie1024
           PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
-          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit generated SVGs
         shell: bash
