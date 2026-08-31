@@ -1,56 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
-<title id="title">zijie1024 GitHub Profile Terminal</title>
-<desc id="desc">Terminal style hero card for GitHub profile README.</desc>
-<defs>
-<style>
-.text{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-.title{fill:#7d8b99;font-size:12px}
-.prompt{fill:#7ee787;font-size:16px}
-.command{fill:#f0f6fc;font-size:16px}
-.name{fill:#f0f6fc;font-size:42px;font-weight:700}
-.role{fill:#a8b3be;font-size:22px}
-.body{fill:#aeb8c2;font-size:15px}
-.key{fill:#7d8b99;font-size:14px}
-.val{fill:#dce6ef;font-size:14px}
-.tagText{fill:#c7d2dc;font-size:12px}
-.footer{fill:#7ee787;font-size:16px}
-</style>
-</defs>
+<title id="title">zijie1024 GitHub Profile</title>
+<desc id="desc">Terminal style profile card.</desc>
+<defs><style>
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.title{fill:#7d8b99;font-size:12px}.prompt{fill:#7ee787;font-size:16px}.cmd{fill:#f0f6fc;font-size:16px}.name{fill:#f0f6fc;font-size:42px;font-weight:700}.role{fill:#a8b3be;font-size:22px}.body{fill:#aeb8c2;font-size:15px}.key{fill:#7d8b99;font-size:14px}.val{fill:#dce6ef;font-size:14px}.tag{fill:#c7d2dc;font-size:12px}
+</style></defs>
 <rect width="1200" height="390" rx="18" fill="#0f141b"/>
 <rect x="1" y="1" width="1198" height="388" rx="17" fill="none" stroke="#26313d"/>
 <path d="M18 0H1182Q1200 0 1200 18V46H0V18Q0 0 18 0Z" fill="#121922"/>
 <path d="M0 46H1200" stroke="#26313d"/>
-<circle cx="24" cy="23" r="6" fill="#ff5f56"/>
-<circle cx="44" cy="23" r="6" fill="#ffbd2e"/>
-<circle cx="64" cy="23" r="6" fill="#27c93f"/>
-<text x="600" y="28" text-anchor="middle" class="text title">zijie1024@github — profile</text>
-<text x="28" y="78" class="text prompt">zijie1024@github:~$</text>
-<text x="206" y="78" class="text command">whoami</text>
-<text x="28" y="128" class="text name">yk</text>
-<text x="28" y="160" class="text role">AI Full-stack Engineer</text>
-<text x="28" y="198" class="text body">Building AI-native developer tools, agent runtimes and backend systems.</text>
-<text x="28" y="222" class="text body">Interested in how reliable software architecture evolves when models, tools,</text>
-<text x="28" y="246" class="text body">memory and execution become first-class runtime primitives.</text>
-<rect x="28" y="266" width="108" height="28" rx="8" fill="#101720" stroke="#2b3947"/>
-<text x="82" y="284" text-anchor="middle" class="text tagText">Agent Runtime</text>
-<rect x="146" y="266" width="92" height="28" rx="8" fill="#101720" stroke="#2b3947"/>
-<text x="192" y="284" text-anchor="middle" class="text tagText">AI Coding</text>
-<rect x="248" y="266" width="126" height="28" rx="8" fill="#101720" stroke="#2b3947"/>
-<text x="311" y="284" text-anchor="middle" class="text tagText">Backend Systems</text>
-<rect x="384" y="266" width="52" height="28" rx="8" fill="#101720" stroke="#2b3947"/>
-<text x="410" y="284" text-anchor="middle" class="text tagText">RAG</text>
-<rect x="446" y="266" width="128" height="28" rx="8" fill="#101720" stroke="#2b3947"/>
-<text x="510" y="284" text-anchor="middle" class="text tagText">Developer Tools</text>
+<circle cx="24" cy="23" r="6" fill="#ff5f56"/><circle cx="44" cy="23" r="6" fill="#ffbd2e"/><circle cx="64" cy="23" r="6" fill="#27c93f"/>
+<text x="600" y="28" text-anchor="middle" class="t title">zijie1024@github — profile</text>
+<text x="28" y="78" class="t prompt">zijie1024@github:~$</text><text x="206" y="78" class="t cmd">whoami</text>
+<text x="28" y="128" class="t name">yk</text>
+<text x="28" y="160" class="t role">AI Full-stack Engineer</text>
+<text x="28" y="198" class="t body">Building AI-native developer tools, agent runtimes and backend systems.</text>
+<text x="28" y="222" class="t body">Interested in how reliable software architecture evolves when models, tools,</text>
+<text x="28" y="246" class="t body">memory and execution become first-class runtime primitives.</text>
+<rect x="28" y="266" width="108" height="28" rx="8" fill="#101720" stroke="#2b3947"/><text x="82" y="284" text-anchor="middle" class="t tag">Agent Runtime</text>
+<rect x="146" y="266" width="92" height="28" rx="8" fill="#101720" stroke="#2b3947"/><text x="192" y="284" text-anchor="middle" class="t tag">AI Coding</text>
+<rect x="248" y="266" width="126" height="28" rx="8" fill="#101720" stroke="#2b3947"/><text x="311" y="284" text-anchor="middle" class="t tag">Backend Systems</text>
+<rect x="384" y="266" width="52" height="28" rx="8" fill="#101720" stroke="#2b3947"/><text x="410" y="284" text-anchor="middle" class="t tag">RAG</text>
+<rect x="446" y="266" width="128" height="28" rx="8" fill="#101720" stroke="#2b3947"/><text x="510" y="284" text-anchor="middle" class="t tag">Developer Tools</text>
 <path d="M770 92V296" stroke="#2b3744" stroke-dasharray="5 5"/>
-<text x="802" y="126" class="text key">status</text>
-<circle cx="919" cy="121" r="4" fill="#7ee787"/>
-<text x="933" y="126" class="text val">building</text>
-<text x="802" y="164" class="text key">project</text>
-<text x="918" y="164" class="text val">Autryn</text>
-<text x="802" y="202" class="text key">focus</text>
-<text x="918" y="202" class="text val">Agent Runtime / Context Engineering</text>
-<text x="802" y="240" class="text key">mode</text>
-<text x="918" y="240" class="text val">ship → learn → iterate</text>
-<text x="28" y="350" class="text footer">zijie1024@github:~$</text>
-<rect x="206" y="336" width="10" height="18" rx="1" fill="#7ee787"/>
+<text x="802" y="126" class="t key">status</text><circle cx="919" cy="121" r="4" fill="#7ee787"/><text x="933" y="126" class="t val">building</text>
+<text x="802" y="164" class="t key">project</text><text x="918" y="164" class="t val">Autryn</text>
+<text x="802" y="202" class="t key">focus</text><text x="918" y="202" class="t val">Agent Runtime / Context Engineering</text>
+<text x="802" y="240" class="t key">mode</text><text x="918" y="240" class="t val">ship → learn → iterate</text>
+<text x="28" y="350" class="t prompt">zijie1024@github:~$</text><rect x="206" y="336" width="10" height="18" rx="1" fill="#7ee787"/>
 </svg>
