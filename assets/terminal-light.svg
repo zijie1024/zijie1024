@@ -1,31 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
 <title id="title">zijie1024 GitHub Profile</title>
-<desc id="desc">Terminal style profile card.</desc>
-<defs><style>
-.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-.title{fill:#656d76;font-size:12px}.prompt{fill:#1a7f37;font-size:16px}.cmd{fill:#1f2328;font-size:16px}.name{fill:#1f2328;font-size:42px;font-weight:700}.role{fill:#57606a;font-size:22px}.body{fill:#4b5560;font-size:15px}.key{fill:#656d76;font-size:14px}.val{fill:#1f2328;font-size:14px}.tag{fill:#374151;font-size:12px}
-</style></defs>
-<rect width="1200" height="390" rx="18" fill="#fff"/>
-<rect x="1" y="1" width="1198" height="388" rx="17" fill="none" stroke="#d0d7de"/>
-<path d="M18 0H1182Q1200 0 1200 18V46H0V18Q0 0 18 0Z" fill="#f6f8fa"/>
-<path d="M0 46H1200" stroke="#d0d7de"/>
-<circle cx="24" cy="23" r="6" fill="#ff5f56"/><circle cx="44" cy="23" r="6" fill="#ffbd2e"/><circle cx="64" cy="23" r="6" fill="#27c93f"/>
-<text x="600" y="28" text-anchor="middle" class="t title">zijie1024@github — profile</text>
-<text x="28" y="78" class="t prompt">zijie1024@github:~$</text><text x="206" y="78" class="t cmd">whoami</text>
-<text x="28" y="128" class="t name">yk</text>
-<text x="28" y="160" class="t role">AI Full-stack Engineer</text>
-<text x="28" y="198" class="t body">Building AI-native developer tools, agent runtimes and backend systems.</text>
-<text x="28" y="222" class="t body">Interested in how reliable software architecture evolves when models, tools,</text>
-<text x="28" y="246" class="t body">memory and execution become first-class runtime primitives.</text>
-<rect x="28" y="266" width="108" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/><text x="82" y="284" text-anchor="middle" class="t tag">Agent Runtime</text>
-<rect x="146" y="266" width="92" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/><text x="192" y="284" text-anchor="middle" class="t tag">AI Coding</text>
-<rect x="248" y="266" width="126" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/><text x="311" y="284" text-anchor="middle" class="t tag">Backend Systems</text>
-<rect x="384" y="266" width="52" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/><text x="410" y="284" text-anchor="middle" class="t tag">RAG</text>
-<rect x="446" y="266" width="128" height="28" rx="8" fill="#f6f8fa" stroke="#d0d7de"/><text x="510" y="284" text-anchor="middle" class="t tag">Developer Tools</text>
-<path d="M770 92V296" stroke="#d0d7de" stroke-dasharray="5 5"/>
-<text x="802" y="126" class="t key">status</text><circle cx="919" cy="121" r="4" fill="#1a7f37"/><text x="933" y="126" class="t val">building</text>
-<text x="802" y="164" class="t key">project</text><text x="918" y="164" class="t val">Autryn</text>
-<text x="802" y="202" class="t key">focus</text><text x="918" y="202" class="t val">Agent Runtime / Context Engineering</text>
-<text x="802" y="240" class="t key">mode</text><text x="918" y="240" class="t val">ship → learn → iterate</text>
-<text x="28" y="350" class="t prompt">zijie1024@github:~$</text><rect x="206" y="336" width="10" height="18" rx="1" fill="#1a7f37"/>
+<desc id="desc">Terminal-style profile card for yk, AI Full-stack Engineer</desc>
+<rect x="1" y="1" width="1198" height="388" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+<path d="M15 1H1185C1192.73 1 1199 7.27 1199 15V48H1V15C1 7.27 7.27 1 15 1Z" fill="#f6f8fa"/>
+<line x1="1" y1="48" x2="1199" y2="48" stroke="#d0d7de"/>
+<circle cx="24" cy="25" r="6" fill="#ff5f56"/>
+<circle cx="44" cy="25" r="6" fill="#ffbd2e"/>
+<circle cx="64" cy="25" r="6" fill="#27c93f"/>
+<text x="600" y="30" text-anchor="middle" fill="#656d76" font-size="12" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">zijie1024@github — profile</text>
+<text x="28" y="82" fill="#1a7f37" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">zijie1024@github:~$</text>
+<text x="205" y="82" fill="#1f2328" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">whoami</text>
+<text x="28" y="120" fill="#1f2328" font-size="27" font-weight="700" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">yk</text>
+<text x="28" y="149" fill="#4b5560" font-size="18" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">AI Full-stack Engineer</text>
+<text x="28" y="184" fill="#1f2328" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">Building AI-native applications and backend systems.</text>
+<text x="28" y="216" fill="#4b5560" font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">Enjoying AI Coding and exploring the convergence of AI and software engineering,</text>
+<text x="28" y="239" fill="#4b5560" font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">with a continued focus on engineering practice in AI application development</text>
+<text x="28" y="262" fill="#4b5560" font-size="14" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">and backend systems.</text>
+<g font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace" font-size="12">
+<rect x="28" y="284" width="112" height="26" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="84" y="301.5" text-anchor="middle" fill="#1f2328">AI Engineering</text>
+<rect x="150" y="284" width="66" height="26" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="183" y="301.5" text-anchor="middle" fill="#1f2328">Agent</text>
+<rect x="226" y="284" width="48" height="26" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="250" y="301.5" text-anchor="middle" fill="#1f2328">RAG</text>
+<rect x="284" y="284" width="123" height="26" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="345.5" y="301.5" text-anchor="middle" fill="#1f2328">Backend Systems</text>
+<rect x="417" y="284" width="176" height="26" rx="6" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="505" y="301.5" text-anchor="middle" fill="#1f2328">Distributed Architecture</text>
+</g>
+<line x1="720" y1="100" x2="720" y2="257" stroke="#d0d7de"/>
+<g font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace" font-size="14">
+<text x="760" y="126" fill="#656d76">status</text>
+<circle cx="852" cy="121" r="5" fill="#1a7f37"/>
+<text x="866" y="126" fill="#1f2328">building</text>
+<text x="760" y="162" fill="#656d76">project</text>
+<text x="852" y="162" fill="#0969da">Autryn</text>
+<text x="760" y="198" fill="#656d76">focus</text>
+<text x="852" y="198" fill="#1f2328">Agent Runtime</text>
+<text x="760" y="234" fill="#656d76">mode</text>
+<text x="852" y="234" fill="#1f2328">ship → learn → iterate</text>
+</g>
+<text x="28" y="351" fill="#1a7f37" font-size="15" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace">zijie1024@github:~$</text>
+<rect x="205" y="338" width="8" height="17" rx="1" fill="#1f2328"/>
 </svg>
