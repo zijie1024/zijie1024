@@ -48,18 +48,24 @@ const response = await fetch("https://api.github.com/graphql", {
   },
   body: JSON.stringify({
     query: QUERY,
-    variables: { username: USERNAME }
+    variables: {
+      username: USERNAME
+    }
   })
 });
 
 if (!response.ok) {
-  throw new Error(`GitHub GraphQL request failed: ${response.status} ${await response.text()}`);
+  throw new Error(
+    `GitHub GraphQL request failed: ${response.status} ${await response.text()}`
+  );
 }
 
 const result = await response.json();
 
 if (result.errors?.length) {
-  throw new Error(`GitHub GraphQL error: ${JSON.stringify(result.errors, null, 2)}`);
+  throw new Error(
+    `GitHub GraphQL error: ${JSON.stringify(result.errors, null, 2)}`
+  );
 }
 
 if (!result.data?.user) {
@@ -100,112 +106,228 @@ const THEMES = {
   }
 };
 
-const escapeXml = value =>
-  String(value).replace(/[<>&"']/g, char => ({
+function escapeXml(value) {
+  return String(value).replace(/[<>&"']/g, char => ({
     "<": "&lt;",
     ">": "&gt;",
     "&": "&amp;",
     "\"": "&quot;",
     "'": "&apos;"
-  }[char]));
+  })[char]);
+}
 
-const parseDate = value => {
-  const [year, month, day] = value.slice(0, 10).split("-").map(Number);
-  return new Date(Date.UTC(year, month - 1, day));
-};
-
-const formatMonthYear = value =>
-  new Intl.DateTimeFormat("en", {
+function formatMonthYear(value) {
+  return new Intl.DateTimeFormat("en", {
     month: "short",
     year: "numeric",
     timeZone: "UTC"
   }).format(new Date(value));
+}
 
-const dayDiff = (a, b) => Math.round((parseDate(a) - parseDate(b)) / 86400000);
+function getMonthWeekIndex(month, weeks) {
+  const exactIndex = weeks.findIndex(week =>
+    week.contributionDays.some(day => day.date === month.firstDay)
+  );
+
+  if (exactIndex >= 0) {
+    return exactIndex;
+  }
+
+  const prefix = month.firstDay.slice(0, 7);
+
+  return weeks.findIndex(week =>
+    week.contributionDays.some(day => day.date.startsWith(prefix))
+  );
+}
 
 function render(themeName) {
   const theme = THEMES[themeName];
   const weeks = calendar.weeks;
 
+  if (!weeks.length) {
+    throw new Error("GitHub returned an empty contribution calendar");
+  }
+
+  /*
+   * SVG overall layout
+   *
+   * command
+   * ------------------------------------------------
+   *
+   * ┌──────────────────────────────────────────────┐
+   * │ total        Less [][][][][] More     period │
+   * │                                              │
+   * │     Sep Oct Nov ...                          │
+   * │ Mon □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │     □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │ Wed □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │     □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │ Fri □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │     □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * │     □□□□□□□□□□□□□□□□□□□□□□□□□□□ │
+   * └──────────────────────────────────────────────┘
+   */
+
   const width = 1200;
-  const height = 220;
+  const height = 244;
 
   const cardX = 1;
   const cardY = 38;
   const cardWidth = 1198;
-  const cardHeight = 181;
+  const cardHeight = 205;
 
+  /*
+   * Heatmap horizontal bounds.
+   *
+   * The grid intentionally expands almost to the right edge of the card.
+   * Cell width is calculated dynamically from the actual week count.
+   */
   const gridX = 72;
-  const gridY = 92;
+  const gridRight = 1170;
+  const gridWidth = gridRight - gridX;
 
-  const cell = 14;
-  const gap = 4;
-  const step = cell + gap;
+  /*
+   * A fixed horizontal gap keeps the GitHub-like appearance.
+   * Cell width fills all remaining horizontal space.
+   */
+  const columnGap = 4;
+  const cell =
+    (gridWidth - columnGap * (weeks.length - 1)) /
+    weeks.length;
 
-  const firstWeekDate = weeks[0]?.firstDay;
+  const columnStep = cell + columnGap;
 
-  const period = `${formatMonthYear(collection.startedAt)} → ${formatMonthYear(collection.endedAt)}`;
+  /*
+   * Vertical dimensions.
+   */
+  const gridY = 94;
+  const rowGap = 4;
+  const rowStep = cell + rowGap;
 
-  const out = [];
+  /*
+   * Top summary line.
+   */
+  const summaryY = 66;
 
-  out.push(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc">`
+  /*
+   * Month label baseline.
+   */
+  const monthY = 84;
+
+  const period =
+    `${formatMonthYear(collection.startedAt)} → ` +
+    `${formatMonthYear(collection.endedAt)}`;
+
+  const output = [];
+
+  output.push(
+    `<svg xmlns="http://www.w3.org/2000/svg" ` +
+    `width="${width}" height="${height}" ` +
+    `viewBox="0 0 ${width} ${height}" ` +
+    `role="img" aria-labelledby="title desc">`
   );
-  out.push(`<title id="title">${escapeXml(USERNAME)} GitHub Contributions</title>`);
-  out.push(`<desc id="desc">${calendar.totalContributions} contributions in the last year</desc>`);
-  out.push(`<defs><style>`);
-  out.push(`.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}`);
-  out.push(`.p{fill:${theme.prompt};font-size:15px}`);
-  out.push(`.c{fill:${theme.text};font-size:15px}`);
-  out.push(`.m{fill:${theme.muted};font-size:10px}`);
-  out.push(`.s{fill:${theme.text};font-size:12px}`);
-  out.push(`</style></defs>`);
 
-  out.push(`<text x="12" y="20" class="t p">${escapeXml(USERNAME)}@github:~$</text>`);
-  out.push(`<text x="190" y="20" class="t c">git contributions --since=&quot;1 year ago&quot;</text>`);
-
-  out.push(
-    `<rect x="${cardX}" y="${cardY}" width="${cardWidth}" height="${cardHeight}" rx="13" fill="${theme.background}" stroke="${theme.border}"/>`
+  output.push(
+    `<title id="title">${escapeXml(USERNAME)} GitHub Contributions</title>`
   );
 
-  out.push(`<text x="28" y="66" class="t s">${calendar.totalContributions} contributions in the last year</text>`);
-  out.push(`<text x="1170" y="66" text-anchor="end" class="t m">${escapeXml(period)}</text>`);
+  output.push(
+    `<desc id="desc">` +
+    `${calendar.totalContributions} contributions in the last year` +
+    `</desc>`
+  );
 
-  const usedMonthColumns = new Set();
+  output.push(`<defs>`);
 
-  for (const month of calendar.months) {
-    if (!firstWeekDate) continue;
-    const diff = dayDiff(month.firstDay, firstWeekDate);
-    const weekIndex = Math.max(0, Math.floor(diff / 7));
-    if (weekIndex >= weeks.length || usedMonthColumns.has(weekIndex)) continue;
-    usedMonthColumns.add(weekIndex);
-    out.push(
-      `<text x="${gridX + weekIndex * step}" y="82" class="t m">${escapeXml(month.name.slice(0, 3))}</text>`
-    );
-  }
+  output.push(`<style>`);
 
-  const weekdayLabels = [
-    ["Mon", 1],
-    ["Wed", 3],
-    ["Fri", 5]
-  ];
+  output.push(
+    `.t{` +
+    `font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,` +
+    `"Liberation Mono","Courier New",monospace` +
+    `}`
+  );
 
-  for (const [label, row] of weekdayLabels) {
-    out.push(`<text x="28" y="${gridY + row * step + 10}" class="t m">${label}</text>`);
-  }
+  output.push(
+    `.prompt{fill:${theme.prompt};font-size:15px}`
+  );
 
-  weeks.forEach((week, weekIndex) => {
-    week.contributionDays.forEach(day => {
-      const x = gridX + weekIndex * step;
-      const y = gridY + day.weekday * step;
-      const color = theme.levels[day.contributionLevel] || theme.levels.NONE;
-      const countText = `${day.contributionCount} contribution${day.contributionCount === 1 ? "" : "s"}`;
-      out.push(
-        `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="${color}"><title>${escapeXml(day.date)}: ${countText}</title></rect>`
-      );
-    });
-  });
+  output.push(
+    `.command{fill:${theme.text};font-size:15px}`
+  );
 
+  output.push(
+    `.summary{fill:${theme.text};font-size:12px}`
+  );
+
+  output.push(
+    `.muted{fill:${theme.muted};font-size:10px}`
+  );
+
+  output.push(`</style>`);
+
+  output.push(`</defs>`);
+
+  /*
+   * Terminal command outside the card.
+   */
+  output.push(
+    `<text x="12" y="20" class="t prompt">` +
+    `${escapeXml(USERNAME)}@github:~$` +
+    `</text>`
+  );
+
+  output.push(
+    `<text x="190" y="20" class="t command">` +
+    `git contributions --since=&quot;1 year ago&quot;` +
+    `</text>`
+  );
+
+  /*
+   * Card.
+   */
+  output.push(
+    `<rect ` +
+    `x="${cardX}" ` +
+    `y="${cardY}" ` +
+    `width="${cardWidth}" ` +
+    `height="${cardHeight}" ` +
+    `rx="13" ` +
+    `fill="${theme.background}" ` +
+    `stroke="${theme.border}"` +
+    `/>`
+  );
+
+  /*
+   * Contribution count.
+   */
+  output.push(
+    `<text x="28" y="${summaryY}" class="t summary">` +
+    `${calendar.totalContributions} contributions in the last year` +
+    `</text>`
+  );
+
+  /*
+   * Date range.
+   *
+   * Align with the right edge of the actual heatmap rather than
+   * the outer SVG canvas.
+   */
+  output.push(
+    `<text ` +
+    `x="${gridRight}" ` +
+    `y="${summaryY}" ` +
+    `text-anchor="end" ` +
+    `class="t muted">` +
+    `${escapeXml(period)}` +
+    `</text>`
+  );
+
+  /*
+   * Legend on the FIRST ROW.
+   *
+   * It no longer occupies the blank space beside the heatmap.
+   */
   const levels = [
     "NONE",
     "FIRST_QUARTILE",
@@ -214,40 +336,168 @@ function render(themeName) {
     "FOURTH_QUARTILE"
   ];
 
-  const legendY = 205;
-  const legendBoxSize = 12;
-  const legendBoxGap = 5;
-  const legendTextGap = 8;
+  const legendBoxSize = 11;
+  const legendBoxGap = 4;
 
-  const lessWidth = 26;
-  const moreWidth = 30;
-  const boxesWidth = levels.length * legendBoxSize + (levels.length - 1) * legendBoxGap;
-  const legendWidth = lessWidth + legendTextGap + boxesWidth + legendTextGap + moreWidth;
-  const legendStart = width - 28 - legendWidth;
-  const legendBoxesStart = legendStart + lessWidth + legendTextGap;
+  /*
+   * Fixed position between total contribution count and date range.
+   *
+   * This keeps all first-row metadata on one line.
+   */
+  const legendStartX = 810;
+  const legendY = summaryY;
 
-  out.push(`<text x="${legendStart}" y="${legendY}" class="t m">Less</text>`);
+  output.push(
+    `<text ` +
+    `x="${legendStartX}" ` +
+    `y="${legendY}" ` +
+    `class="t muted">Less</text>`
+  );
+
+  const legendBoxesStartX = legendStartX + 31;
 
   levels.forEach((level, index) => {
-    out.push(
-      `<rect x="${legendBoxesStart + index * (legendBoxSize + legendBoxGap)}" y="${legendY - 10}" width="${legendBoxSize}" height="${legendBoxSize}" rx="2" fill="${theme.levels[level]}"/>`
+    output.push(
+      `<rect ` +
+      `x="${legendBoxesStartX + index * (legendBoxSize + legendBoxGap)}" ` +
+      `y="${legendY - 10}" ` +
+      `width="${legendBoxSize}" ` +
+      `height="${legendBoxSize}" ` +
+      `rx="2" ` +
+      `fill="${theme.levels[level]}"` +
+      `/>`
     );
   });
 
-  out.push(`<text x="${legendBoxesStart + boxesWidth + legendTextGap}" y="${legendY}" class="t m">More</text>`);
+  const legendBoxesWidth =
+    levels.length * legendBoxSize +
+    (levels.length - 1) * legendBoxGap;
 
-  out.push(`</svg>`);
+  output.push(
+    `<text ` +
+    `x="${legendBoxesStartX + legendBoxesWidth + 8}" ` +
+    `y="${legendY}" ` +
+    `class="t muted">More</text>`
+  );
 
-  return out.join("");
+  /*
+   * Month labels.
+   */
+  const usedMonthColumns = new Set();
+
+  for (const month of calendar.months) {
+    const weekIndex = getMonthWeekIndex(month, weeks);
+
+    if (weekIndex < 0 || weekIndex >= weeks.length) {
+      continue;
+    }
+
+    if (usedMonthColumns.has(weekIndex)) {
+      continue;
+    }
+
+    usedMonthColumns.add(weekIndex);
+
+    const x = gridX + weekIndex * columnStep;
+
+    output.push(
+      `<text ` +
+      `x="${x.toFixed(2)}" ` +
+      `y="${monthY}" ` +
+      `class="t muted">` +
+      `${escapeXml(month.name.slice(0, 3))}` +
+      `</text>`
+    );
+  }
+
+  /*
+   * Weekday labels.
+   */
+  const weekdayLabels = [
+    ["Mon", 1],
+    ["Wed", 3],
+    ["Fri", 5]
+  ];
+
+  for (const [label, weekday] of weekdayLabels) {
+    const y =
+      gridY +
+      weekday * rowStep +
+      cell * 0.73;
+
+    output.push(
+      `<text ` +
+      `x="28" ` +
+      `y="${y.toFixed(2)}" ` +
+      `class="t muted">` +
+      `${label}` +
+      `</text>`
+    );
+  }
+
+  /*
+   * Contribution cells.
+   */
+  weeks.forEach((week, weekIndex) => {
+    week.contributionDays.forEach(day => {
+      const x =
+        gridX +
+        weekIndex * columnStep;
+
+      const y =
+        gridY +
+        day.weekday * rowStep;
+
+      const color =
+        theme.levels[day.contributionLevel] ||
+        theme.levels.NONE;
+
+      const countText =
+        `${day.contributionCount} contribution` +
+        `${day.contributionCount === 1 ? "" : "s"}`;
+
+      output.push(
+        `<rect ` +
+        `x="${x.toFixed(2)}" ` +
+        `y="${y.toFixed(2)}" ` +
+        `width="${cell.toFixed(2)}" ` +
+        `height="${cell.toFixed(2)}" ` +
+        `rx="2.5" ` +
+        `fill="${color}">` +
+        `<title>` +
+        `${escapeXml(day.date)}: ${escapeXml(countText)}` +
+        `</title>` +
+        `</rect>`
+      );
+    });
+  });
+
+  output.push(`</svg>`);
+
+  return output.join("");
 }
 
 const assetsDir = path.resolve("assets");
-fs.mkdirSync(assetsDir, { recursive: true });
+
+fs.mkdirSync(assetsDir, {
+  recursive: true
+});
 
 for (const themeName of Object.keys(THEMES)) {
-  const output = path.join(assetsDir, `contributions-${themeName}.svg`);
-  fs.writeFileSync(output, render(themeName), "utf8");
-  console.log(`Generated ${output}`);
+  const outputPath = path.join(
+    assetsDir,
+    `contributions-${themeName}.svg`
+  );
+
+  fs.writeFileSync(
+    outputPath,
+    render(themeName),
+    "utf8"
+  );
+
+  console.log(`Generated ${outputPath}`);
 }
 
-console.log(`Done: ${calendar.totalContributions} contributions for ${USERNAME}`);
+console.log(
+  `Done: ${calendar.totalContributions} contributions for ${USERNAME}`
+);
