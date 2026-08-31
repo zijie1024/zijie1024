@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+<title id="title">About</title>
+<desc id="desc">About zijie1024</desc>
+<defs>
+<style>
+.text{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.prompt{fill:#1a7f37;font-size:15px}
+.command{fill:#1f2328;font-size:15px}
+.body{fill:#4b5560;font-size:15px}
+.strong{fill:#1f2328;font-weight:600}
+</style>
+</defs>
+<rect width="1200" height="220" rx="14" fill="#ffffff"/>
+<rect x="1" y="1" width="1198" height="218" rx="13" fill="none" stroke="#d0d7de"/>
+<text x="28" y="38" class="text prompt">zijie1024@github:~$</text>
+<text x="206" y="38" class="text command">cat ./about.txt</text>
+<text x="28" y="86" class="text body">
+<tspan>I build systems around </tspan>
+<tspan class="strong">Agent Runtime</tspan>
+<tspan>, </tspan>
+<tspan class="strong">AI Coding</tspan>
+<tspan>, </tspan>
+<tspan class="strong">Backend Engineering</tspan>
+<tspan> and</tspan>
+</text>
+<text x="28" y="112" class="text body">
+<tspan class="strong">Retrieval-Augmented Generation</tspan>
+<tspan>.</tspan>
+</text>
+<text x="28" y="156" class="text body">I care about clean abstractions, predictable execution, observability and making AI-assisted</text>
+<text x="28" y="182" class="text body">development feel like normal software engineering rather than a collection of demos.</text>
+</svg>
