@@ -5,9 +5,9 @@
 <rect x="1" y="1" width="578" height="208" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
 <text x="24" y="36" class="t n">Autryn</text><text x="548" y="36" text-anchor="end" class="t arrow">↗</text>
 <text x="24" y="60" class="t type">Composable Local AI Agent Runtime</text>
-<text x="24" y="96" class="t b">A lightweight runtime for building local AI agents with unified</text>
-<text x="24" y="118" class="t b">model, message and tool contracts, plus execution, session,</text>
-<text x="24" y="140" class="t b">memory, delegation, handoff and middleware abstractions.</text>
+<text x="24" y="96" class="t b">A lightweight runtime for building local AI agents with unified model,</text>
+<text x="24" y="118" class="t b">message and tool contracts, plus execution, session, memory, delegation,</text>
+<text x="24" y="140" class="t b">handoff and middleware abstractions.</text>
 <rect x="24" y="164" width="82" height="26" rx="7" fill="#fff" stroke="#d0d7de"/><text x="65" y="181" text-anchor="middle" class="t tag">TypeScript</text>
 <rect x="116" y="164" width="46" height="26" rx="7" fill="#fff" stroke="#d0d7de"/><text x="139" y="181" text-anchor="middle" class="t tag">Bun</text>
 <rect x="172" y="164" width="70" height="26" rx="7" fill="#fff" stroke="#d0d7de"/><text x="207" y="181" text-anchor="middle" class="t tag">Runtime</text>
