@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="272" viewBox="0 0 1200 272">
 <defs><style>
-.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#1a7f37;font-size:15px}.c{fill:#1f2328;font-size:15px}.k{fill:#0969da;font-size:14px}.v{fill:#374151;font-size:14px}.m{fill:#656d76;font-size:11px}
+.t{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}.p{fill:#7ee787;font-size:15px}.c{fill:#f0f6fc;font-size:15px}.k{fill:#79c0ff;font-size:14px}.v{fill:#d7e0e8;font-size:14px}.m{fill:#7d8b99;font-size:11px}
 </style></defs>
 <text x="12" y="20" class="t p">zijie1024@github:~$</text><text x="190" y="20" class="t c">cat ./stack.yml</text>
-<rect x="1" y="38" width="1198" height="233" rx="13" fill="#fff" stroke="#d0d7de"/>
-<path d="M600 58V244" stroke="#d0d7de" stroke-dasharray="5 5"/>
+<rect x="1" y="38" width="1198" height="233" rx="13" fill="#0f141b" stroke="#26313d"/>
+<path d="M600 58V244" stroke="#2b3744" stroke-dasharray="5 5"/>
 <text x="34" y="74" class="t k">languages:</text>
 <text x="56" y="102" class="t v">- Java</text><text x="56" y="128" class="t v">- TypeScript</text><text x="56" y="154" class="t v">- Python</text>
 <text x="300" y="74" class="t k">backend:</text>
