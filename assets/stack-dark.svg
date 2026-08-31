@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+<title id="title">Technology Stack</title>
+<desc id="desc">Technology stack used by zijie1024</desc>
+<defs>
+<style>
+.text{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.prompt{fill:#7ee787;font-size:15px}
+.command{fill:#f0f6fc;font-size:15px}
+.key{fill:#79c0ff;font-size:14px}
+.value{fill:#d7e0e8;font-size:14px}
+.comment{fill:#7d8b99;font-size:11px}
+</style>
+</defs>
+<rect width="1200" height="330" rx="14" fill="#0f141b"/>
+<rect x="1" y="1" width="1198" height="328" rx="13" fill="none" stroke="#26313d"/>
+<text x="28" y="38" class="text prompt">zijie1024@github:~$</text>
+<text x="206" y="38" class="text command">cat ./stack.yml</text>
+<path d="M600 66V292" stroke="#2b3744" stroke-dasharray="5 5"/>
+<text x="40" y="82" class="text key">languages:</text>
+<text x="62" y="110" class="text value">- Java</text>
+<text x="62" y="136" class="text value">- TypeScript</text>
+<text x="62" y="162" class="text value">- Python</text>
+<text x="40" y="206" class="text key">backend:</text>
+<text x="62" y="234" class="text value">- Spring Boot</text>
+<text x="62" y="260" class="text value">- MySQL</text>
+<text x="250" y="234" class="text value">- Redis</text>
+<text x="250" y="260" class="text value">- RabbitMQ</text>
+<text x="636" y="82" class="text key">ai:</text>
+<text x="658" y="110" class="text value">- Agent Runtime</text>
+<text x="658" y="136" class="text value">- RAG</text>
+<text x="658" y="162" class="text value">- Tool / Skill</text>
+<text x="880" y="110" class="text value">- Context / Memory</text>
+<text x="880" y="136" class="text value">- AI Coding</text>
+<text x="636" y="206" class="text key">infra:</text>
+<text x="658" y="234" class="text value">- Docker</text>
+<text x="658" y="260" class="text value">- Linux</text>
+<text x="840" y="234" class="text value">- GitHub Actions</text>
+<text x="28" y="307" class="text comment"># tools change; engineering principles stay.</text>
+</svg>
